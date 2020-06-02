@@ -10,8 +10,18 @@ import tushare as ts
 #df.to_csv("600519.csv")
  
 df = pd.read_csv("600519.csv",index_col='date',parse_dates=['date'])[['open','close','high','low']]
+
  
 print(df[(df['close']-df['open'])/df['open']>=0.03].index)
 
 print(df[(df['open']-df['close'].shift(1))/df['close'].shift(1)<=-0.02].index)
+
+
+data = df[(df['close']-df['open'])/df['open']>=0.03].index
+
+for index in data:
+    print(index)
+
+
+
 
